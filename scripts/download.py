@@ -12,7 +12,7 @@ ONE_MINUTE_IN_MILLIS = 60_000
 def fetch(symbol: str, start_ts: int, end_ts: int) -> pd.DataFrame:
     """Fetch OHLCV between timestamps (inclusive) in milliseconds."""
     exchange = ccxt.binance()
-    rate_limiter = Limiter(Rate(exchange.rateLimit, 1), max_delay=1000)
+    rate_limiter = Limiter(Rate(exchange.rateLimit, 1))
     frames = []
     since_ts = start_ts
     while since_ts < end_ts:
