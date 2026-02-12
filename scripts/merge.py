@@ -14,13 +14,12 @@ def main(args: argparse.Namespace):
     merged_df = pd.concat(dataframes, ignore_index=True)
 
     # Rename real symbol names to generic names
-    merged_df["symbol"].replace(
+    merged_df["symbol"] = merged_df["symbol"].replace(
         {
             f"{args.token1}/{args.fiat}": "token_1/fiat",
             f"{args.token2}/{args.fiat}": "token_2/fiat",
             f"{args.token1}/{args.token2}": "token_1/token_2",
-        },
-        inplace=True
+        }
     )
 
     merged_df["id"] = [str(uuid.uuid4()) for _ in range(len(merged_df))]

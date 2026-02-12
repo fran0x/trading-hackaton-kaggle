@@ -47,6 +47,9 @@ just download
 # Package your strategy for submission
 just tar
 
+# Test your strategy
+just trade
+
 # Run the backtest and score your strategy
 just score
 
